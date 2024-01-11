@@ -42,7 +42,7 @@ export default {
             
             return h(Tab, {
                 key: index,
-                class: 'px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-100 ui-selected:bg-green-600 dark:text-white dark:bg-blue-500/20 dark:hover:bg-blue-500/10 dark:hover:text-white',
+                class: 'px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 ui-selected:bg-green-600 ui-selected:hover:bg-green-600 hover:bg-gray-100  dark:text-white dark:bg-blue-500/20 dark:hover:bg-blue-500/10 dark:hover:text-white',
             }, {
                 default: () => label
             })
