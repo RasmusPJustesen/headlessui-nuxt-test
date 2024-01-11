@@ -23,47 +23,60 @@ const darkMode = ref(false)
 <template>
   <div id="main">
     <ClientOnly>
-      <Tabs name="parent" :default-index="1">
+      <div class="p-3 rounded-full dark:bg-slate-800">
+        <Toggle v-model="darkMode" label="Show Content" />
+      </div>
+      <div class="flex justify-center w-full mt-6" v-show="darkMode">
+        <Tabs name="parent" :default-index="1">
 
-        <p data-tab-label="First">
-          <span>This the first tab</span>
-          <Tabs name="child" :default-index="2">
-            <p data-tab-label="First-child">
-              <span>This the first child tab</span>
-            </p>
-            <div data-tab-label="Second-child">
-              <span>This the second child tab</span>
-            </div>
-            <p data-tab-label="third-child">
-              <span>This the third child tab</span>
-            </p>
-            <p data-tab-label="fourth-child">
-              <span>This the fourth child tab</span>
-            </p>
-          </Tabs>
-        </p>
-
-        <div data-tab-label="Second">
-          <span>This the second tab</span>
-          <Accordion>
-            <template v-for="question in faq" :key="'ques'+question.id">
-              <div :data-tab-label="question.question">
-                <p>{{ question.answer }}</p>
+          <p data-tab-label="First">
+            <span>This the first tab</span>
+            <Tabs name="child">
+              <p data-tab-label="First-child">
+                <span>This the first child tab</span>
+              </p>
+              <div data-tab-label="Second-child">
+                <span>This the second child tab</span>
               </div>
-            </template>
-          </Accordion>
-        </div>
+              <p data-tab-label="third-child">
+                <span>This the third child tab</span>
+                <Tabs name="grandchild">
+                  <p data-tab-label="First-grandchild">
+                    <span>stop, this is getting out of hand</span>
+                  </p>
+                  <div data-tab-label="Second-grandchild">
+                    <span>mmmmm, third tab is a grandchild</span>
+                  </div>
+                </Tabs>
+              </p>
+              <p data-tab-label="fourth-child">
+                <span>This the fourth child tab</span>
+              </p>
+            </Tabs>
+          </p>
 
-        <p>
-          <span>This the third tab</span>
-          <Dropdown :items="items">
-            <button class="inline-flex items-center justify-center px-4 py-2 text-white bg-purple-400 rounded-md">
-              <span>My Dropdown</span>
-            </button>
-          </Dropdown>
-        </p>
+          <div data-tab-label="Second">
+            <span>This the second tab</span>
+            <Accordion>
+              <template v-for="question in faq" :key="'ques'+question.id">
+                <div :data-tab-label="question.question">
+                  <p>{{ question.answer }}</p>
+                </div>
+              </template>
+            </Accordion>
+          </div>
 
-      </Tabs>
+          <p>
+            <span>This the third tab</span>
+            <Dropdown :items="items">
+              <button class="inline-flex items-center justify-center px-4 py-2 text-white bg-purple-400 rounded-md">
+                <span>My Dropdown</span>
+              </button>
+            </Dropdown>
+          </p>
+
+          </Tabs>
+      </div>
     </ClientOnly>
   </div>
 </template>
