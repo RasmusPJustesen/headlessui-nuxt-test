@@ -45,10 +45,22 @@ const darkMode = ref(false)
 
         <div data-tab-label="Second">
           <span>This the second tab</span>
+          <Accordion>
+            <template v-for="question in faq" :key="'ques'+question.id">
+              <div :data-tab-label="question.question">
+                <p>{{ question.answer }}</p>
+              </div>
+            </template>
+          </Accordion>
         </div>
 
         <p>
           <span>This the third tab</span>
+          <Dropdown :items="items">
+            <button class="inline-flex items-center justify-center px-4 py-2 text-white bg-purple-400 rounded-md">
+              <span>My Dropdown</span>
+            </button>
+          </Dropdown>
         </p>
 
       </Tabs>

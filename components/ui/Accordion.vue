@@ -11,6 +11,10 @@ export default {
             content = slots.default()
         }
 
+        if (content[0].props === null) {
+            content = content[0].children
+        }
+
         const renderDisclosure = (index) => {
 
             const label = content[index].props['data-tab-label'] ? content[index].props['data-tab-label'] : 'Tab ' + (index +1)
